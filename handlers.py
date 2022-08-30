@@ -2,7 +2,7 @@ from abc import ABCMeta
 from random import random
 from typing import Any
 
-import tornado
+import tornado.web
 from tornado import httputil
 
 
@@ -28,4 +28,10 @@ class ImageHandler(BaseHandler):
 
     def post(self):
         print("post")
+        file1 = self.request.files['webcam'][0]
+        original_fname = file1['filename']
 
+        output_file = open("uploads/" + original_fname, 'wb')
+        output_file.write(file1['body'])
+
+        self.finish("file " + original_fname + " is uploaded")
