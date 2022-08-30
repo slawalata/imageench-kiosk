@@ -6,7 +6,7 @@ import tornado.gen
 
 from tornado.options import define, options
 
-from handlers import CameraHandler
+from handlers import CameraHandler, ImageHandler
 
 define("port", default=8888, help="run in tornado on xxxx port", type=int)
 define("id", default=0, help="camera id", type=int)
@@ -16,6 +16,7 @@ class Application(tornado.web.Application):
     def __init__(self):
         handlers = [
             ('/', CameraHandler),
+            ('/image', ImageHandler),
         ]
 
         tornado.web.Application.__init__(

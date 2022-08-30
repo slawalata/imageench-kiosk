@@ -19,3 +19,13 @@ class BaseHandler(tornado.web.RequestHandler, metaclass=ABCMeta):
 class CameraHandler(BaseHandler):
     def get(self):
         self.render("products.html")
+
+
+class ImageHandler(BaseHandler):
+
+    def get(self):
+        print("halo")
+
+    def post(self):
+        print("post")
+
