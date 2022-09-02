@@ -18,5 +18,10 @@ function take_snapshot() {
     Webcam.snap(function (data_uri) {
         // display results in page
         document.getElementById('results').innerHTML = '<img src="' + data_uri + '"/>';
+
+        Webcam.upload(data_uri, "http://localhost:8888/image", function (code, text) {
+
+        });
+
     });
 }
